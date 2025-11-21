@@ -4,42 +4,48 @@
 
 The LIT implementation now uses Tailwind CSS for styling, providing a utility-first approach with a customizable design system.
 
-## Architecture
+## Architecture (Vite-based)
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                      Build Process                           │
+│                   Vite Build Process                         │
 ├─────────────────────────────────────────────────────────────┤
 │                                                              │
-│  1. src/styles.css (Tailwind source)                        │
+│  1. cw-navigation.ts (component source)                      │
 │     ↓                                                        │
-│  2. Tailwind CLI processes with tailwind.config.js          │
+│  2. import styles from './styles.css?inline'                 │
 │     ↓                                                        │
-│  3. dist/styles.css (compiled CSS)                          │
+│  3. Vite processes CSS through PostCSS + Tailwind           │
 │     ↓                                                        │
-│  4. inject-css.js injects CSS into TypeScript               │
+│  4. Tailwind compiles utilities based on tailwind.config.js │
 │     ↓                                                        │
-│  5. cw-navigation-lit.compiled.ts (with embedded CSS)      │
+│  5. CSS is inlined into the component                        │
 │     ↓                                                        │
-│  6. TypeScript compiler                                      │
+│  6. TypeScript is compiled                                   │
 │     ↓                                                        │
-│  7. dist/cw-navigation-lit.js (final component)            │
+│  7. dist/cw-navigation.es.js (final ES module)              │
+│  8. dist/cw-navigation.umd.js (final UMD module)            │
 │                                                              │
 └─────────────────────────────────────────────────────────────┘
 ```
 
-## Files Created/Modified
+## Key Files
 
-### New Files:
-1. **`src/styles.css`** - Tailwind source with custom utilities
-2. **`tailwind.config.js`** - Tailwind configuration with custom colors
-3. **`postcss.config.js`** - PostCSS configuration
-4. **`inject-css.js`** - Build script to inject CSS into TypeScript
-5. **`tsconfig.build.json`** - TypeScript config for compiled file
+### Configuration Files:
+1. **`styles.css`** - Tailwind source with custom utilities
+2. **`tailwind.config.js`** - Tailwind configuration (scans component for classes)
+3. **`postcss.config.js`** - PostCSS configuration (processes Tailwind)
+4. **`vite.config.ts`** - Vite bundler configuration
+5. **`tsconfig.json`** - TypeScript configuration
 
-### Modified Files:
-1. **`package.json`** - Added Tailwind dependencies and build scripts
-2. **`cw-navigation-lit.ts`** - Updated to use Tailwind classes
+### Component Files:
+1. **`cw-navigation.ts`** - Main component with Tailwind classes
+2. **`package.json`** - Dependencies and build scripts
+
+### Build Output:
+1. **`dist/cw-navigation.es.js`** - ES module with embedded CSS
+2. **`dist/cw-navigation.umd.js`** - UMD module with embedded CSS
+3. **`dist/cw-navigation.d.ts`** - TypeScript type definitions
 
 ## Custom Tailwind Utilities
 
@@ -70,21 +76,17 @@ colors: {
 ## Build Commands
 
 ```bash
-# Build only CSS
-npm run build:css
-
-# Inject CSS into TypeScript
-npm run build:inject
-
-# Compile TypeScript
-npm run build:ts
-
-# Build everything (recommended)
+# Build for production (compiles TypeScript + Tailwind)
 npm run build
 
-# Watch mode (both CSS and TS)
-npm run watch
+# Development mode with watch (auto-rebuild on changes)
+npm run dev
+
+# Preview the built component
+npm run preview
 ```
+
+**Note:** Vite handles everything automatically - no separate CSS build step needed!
 
 ## Customization Guide
 
@@ -157,17 +159,23 @@ Same as LIT + Tailwind CSS:
 ## Troubleshooting
 
 ### CSS not applying?
-1. Make sure you run `npm run build` (not just `npm run build:ts`)
-2. Check that `dist/styles.css` exists
-3. Verify `cw-navigation-lit.compiled.ts` was created
+1. Make sure you run `npm run build`
+2. Check that `dist/cw-navigation.es.js` exists
+3. Verify Tailwind classes are in the dist file: `Get-Content dist/cw-navigation.es.js | Select-String "bg-slate"`
 
 ### Tailwind directives showing errors in editor?
-- This is normal! The `@tailwind` and `@apply` directives are processed by Tailwind CLI
-- Errors will disappear after running `npm run build:css`
+- This is normal! The `@tailwind` and `@apply` directives are processed by PostCSS during build
+- The component will work correctly after building
 
 ### TypeScript compilation errors?
-- Make sure `cw-navigation-lit.compiled.ts` exists
+- Make sure all dependencies are installed: `npm install`
 - Run the full build: `npm run build`
+- Check `vite.config.ts` is properly configured
+
+### New Tailwind classes not appearing?
+1. Make sure the class is used in `cw-navigation.ts`
+2. Verify `tailwind.config.js` content array includes your file
+3. Rebuild: `npm run build`
 
 ## Example: Adding a New Color Scheme
 
