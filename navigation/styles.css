@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Mobile-first responsive navigation */
+@layer components {
+  nav ul {
+    @apply flex-col;
+  }
+
+  @media (min-width: 768px) {
+    nav ul {
+      @apply flex-row;
+    }
+  }
+}

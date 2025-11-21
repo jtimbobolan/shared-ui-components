@@ -1,0 +1,31 @@
+{
+  "name": "@jtimbobolan/cw-navigation",
+  "version": "1.0.0",
+  "description": "CaseWorthy Navigation web component built with LIT, TypeScript, and Tailwind CSS",
+  "type": "module",
+  "main": "dist/cw-navigation.js",
+  "types": "dist/cw-navigation.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite build --watch --mode development",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": ["web-components", "navigation", "lit", "lit-element", "tailwindcss", "vite"],
+  "author": "jtimbobolan",
+  "license": "MIT",
+  "dependencies": {
+    "lit": "^3.1.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "vite": "^5.0.8",
+    "vite-plugin-dts": "^3.7.0",
+    "tailwindcss": "^3.4.0",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32",
+    "terser": "^5.26.0"
+  }
+}

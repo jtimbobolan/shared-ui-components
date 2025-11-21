@@ -1,0 +1,42 @@
+# Source files (only ship dist)
+*/src/
+*/*.ts
+!*/dist/*.d.ts
+*/tsconfig*.json
+*/vite.config.ts
+*/postcss.config.js
+*/tailwind.config.js
+*/styles.css
+*/inject-css.js
+*/vite-env.d.ts
+
+# Development files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Testing
+coverage/
+.nyc_output/
+*.test.ts
+*.spec.ts
+
+# Build tools
+.github/
+.husky/
+
+# Documentation (except main README and component READMEs)
+*/TAILWIND_GUIDE.md
+*/*.md
+!*/README.md
+!README.md
+
+# Misc
+*.log
+.env
+.env.*
+node_modules/
+

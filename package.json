@@ -1,0 +1,60 @@
+{
+  "name": "@jtimbobolan/shared-ui-components",
+  "version": "1.0.0",
+  "description": "Shared UI components for CaseWorthy applications - framework-agnostic web components built with LIT, TypeScript, and Tailwind CSS",
+  "type": "module",
+  "exports": {
+    "./navigation": {
+      "types": "./navigation/dist/cw-navigation.d.ts",
+      "import": "./navigation/dist/cw-navigation.js"
+    }
+  },
+  "files": [
+    "navigation/dist/**/*",
+    "navigation/README.md",
+    "README.md",
+    "LICENSE",
+    "CONTRIBUTING.md"
+  ],
+  "scripts": {
+    "build": "npm run build:navigation",
+    "build:navigation": "cd navigation && npm run build",
+    "dev": "npm run dev:navigation",
+    "dev:navigation": "cd navigation && npm run dev",
+    "preview:navigation": "cd navigation && npm run preview",
+    "install:all": "npm run install:navigation",
+    "install:navigation": "cd navigation && npm install",
+    "clean": "npm run clean:navigation",
+    "clean:navigation": "rimraf navigation/dist"
+  },
+  "keywords": [
+    "web-components",
+    "navigation",
+    "lit",
+    "lit-element",
+    "tailwindcss",
+    "vite",
+    "caseworthy",
+    "shared-components",
+    "ui-components",
+    "framework-agnostic"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jtimbobolan/shared-ui-components.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jtimbobolan/shared-ui-components/issues"
+  },
+  "homepage": "https://github.com/jtimbobolan/shared-ui-components#readme",
+  "author": "jtimbobolan",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
+
