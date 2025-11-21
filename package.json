@@ -6,7 +6,7 @@
   "exports": {
     "./navigation": {
       "types": "./navigation/dist/cw-navigation.d.ts",
-      "import": "./navigation/dist/cw-navigation.js"
+      "import": "./navigation/dist/cw-navigation.es.js"
     }
   },
   "files": [
