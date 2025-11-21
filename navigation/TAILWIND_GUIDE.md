@@ -19,11 +19,11 @@ The LIT implementation now uses Tailwind CSS for styling, providing a utility-fi
 │     ↓                                                        │
 │  4. inject-css.js injects CSS into TypeScript               │
 │     ↓                                                        │
-│  5. app-navigation-lit.compiled.ts (with embedded CSS)      │
+│  5. cw-navigation-lit.compiled.ts (with embedded CSS)      │
 │     ↓                                                        │
 │  6. TypeScript compiler                                      │
 │     ↓                                                        │
-│  7. dist/app-navigation-lit.js (final component)            │
+│  7. dist/cw-navigation-lit.js (final component)            │
 │                                                              │
 └─────────────────────────────────────────────────────────────┘
 ```
@@ -39,7 +39,7 @@ The LIT implementation now uses Tailwind CSS for styling, providing a utility-fi
 
 ### Modified Files:
 1. **`package.json`** - Added Tailwind dependencies and build scripts
-2. **`app-navigation-lit.ts`** - Updated to use Tailwind classes
+2. **`cw-navigation-lit.ts`** - Updated to use Tailwind classes
 
 ## Custom Tailwind Utilities
 
@@ -159,14 +159,14 @@ Same as LIT + Tailwind CSS:
 ### CSS not applying?
 1. Make sure you run `npm run build` (not just `npm run build:ts`)
 2. Check that `dist/styles.css` exists
-3. Verify `app-navigation-lit.compiled.ts` was created
+3. Verify `cw-navigation-lit.compiled.ts` was created
 
 ### Tailwind directives showing errors in editor?
 - This is normal! The `@tailwind` and `@apply` directives are processed by Tailwind CLI
 - Errors will disappear after running `npm run build:css`
 
 ### TypeScript compilation errors?
-- Make sure `app-navigation-lit.compiled.ts` exists
+- Make sure `cw-navigation-lit.compiled.ts` exists
 - Run the full build: `npm run build`
 
 ## Example: Adding a New Color Scheme

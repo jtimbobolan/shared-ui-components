@@ -1,7 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    "./app-navigation-lit.ts"
+    "./cw-navigation.ts",
+    "./src/**/*.{ts,js,html}"
   ],
   theme: {
     extend: {}

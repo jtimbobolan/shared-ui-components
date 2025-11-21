@@ -1,5 +1,5 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["app-navigation-lit.compiled.ts"],
-  "exclude": ["app-navigation-lit.ts"]
+  "include": ["cw-navigation-lit.compiled.ts"],
+  "exclude": ["cw-navigation-lit.ts"]
 }
